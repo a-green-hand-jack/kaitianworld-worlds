@@ -1,0 +1,6 @@
+# Acceptance record
+- PR https://github.com/a-green-hand-jack/HuTian-KaiTian/pull/11: open, base dev, mergeable=clean, 31 files (poemworld package, zh/en graphs, install.sh, workflows, docs, images, coordination test).
+- Delivery: builder@d9bac1c54234 (release poemworld-v2, tree 20be32f0e8b7).
+- Checked against ht-resource records on trial-machine: "pw stage1 v2" succeeded (system/worker images built); six suites OK (coordination first run 2 env errors, rerun with .venv 420 OK); "pw stage2 world" succeeded with pw_6678165ff877.
+- Trial: pw_6678165ff877, 3 executions / 41.6 model s, editor approved, released; poem matches PR body.
+- Conclusion: meets the commitment; approved.

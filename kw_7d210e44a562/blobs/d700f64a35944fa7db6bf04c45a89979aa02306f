@@ -1,0 +1,23 @@
+# Trial record: PoemWorld (release `poemworld-v2`, commit 20be32f0e8b7, PR #11)
+
+Installed on `trial-machine` in `~/pw-trial1` from the release tarball `poemworld-pr.tar.gz` (`dev-install.sh` venv, images built from that tree: `poemworld:pwtrial1`, `poemworld-worker:pwtrial1`; runtime image reused, packages image built).
+
+Earlier candidate `poemworld-v1` (193650604be2) failed: the packages image build died on a leftover Playwright step (`No module named playwright`); fixed in v2.
+
+## World
+- Command: `poemworld run --config world.json --agent claude-code --model claude-sonnet-5-5 --topic "Write a four-line poem about the first snow."`; world.json: claude-oauth provider, `claude_code.effortLevel` low, `max_executions` 8, `max_model_seconds` 1200. Then `hutian execute <id> --loop`.
+- **World id: `pw_6678165ff877`.** 3 executions, 41.6 model seconds (budget 8 / 1200). Driver ended `world-complete`; editor "approved the delivery", verdict discharged `(released)`.
+- Roles: poet pushed `poem.md` ("The poem keeps to four lines about the first snow"); editor accepted ("The four-line first-snow poem is accepted").
+- Checkpoint (`checkpoint --name pw1`), `stop` (checkpoint before-stop-915d6982), `resume` all succeeded on the released world.
+
+## Released poem (`poem.md`, from `hutian artifacts`)
+```
+Overnight the sky let go its quiet breath,
+and every roof grew soft beneath the white.
+The world, hushed over like a sleeper's rest,
+wakes slowly to the hush of the first light.
+```
+(also in `trial/poem-and-acceptance.txt`)
+
+## Regression checks on trial-machine (Docker present)
+test-obligations 60 OK; test-release-delivery 66 OK; test-agent-cli 13 OK; test-stream 187 OK; test-instruction-cli 16 OK; test-coordination 420 run: first run 2 errors (the tests expect `.venv/bin` at the repo root; my venv was elsewhere); rerun with `.venv` linked: 420 OK. All six suites pass on trial-machine.

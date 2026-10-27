@@ -1,0 +1,11 @@
+# Brief: PoemWorld
+
+Input (quoted): "Make a new domain for HuTian: PoemWorld, the smallest world that is still a whole world. From a request it writes a short poem, and the system releases the poem once it is approved."
+
+World: domain package `poemworld` (command `poemworld`, id prefix `pw`) beside the six domains under `src/`, added as `DEV.md` says (definition via `hutian.definitions` entry point, organization graph in `assets/` zh+en, system and worker images, `install.sh`, CI workflows, per-domain checks). Roles: `poet` writes `poem.md`; `editor` reviews against the input, asks for changes, approves. One edge poet–editor. Release = the approved poem.
+
+Delivered as one PR to private repo `a-green-hand-jack/HuTian-KaiTian`, base `dev`. Trial on `trial-machine`: fresh install, build images, run regression checks, run a world with "Write a four-line poem about the first snow." to release (workers Claude Code, claude-sonnet-5-5, low effort, <=8 executions, 1200 model s). PR states the trial world id, release and poem.
+
+Priorities: keep it small; follow DEV.md exactly; evidence from a real trial.
+Active positions: builder (direction, build, trial) and reviewer (acceptance) only; builder also covers organization/contract content.
+Unknown yet: DEV.md specifics, until read.
